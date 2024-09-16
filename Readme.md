@@ -38,7 +38,7 @@ Un grand merci à:
 
 ## Maquette
 
-![Maquette](<a href="https://ibb.co/BwTNnKQ"><img src="https://i.ibb.co/9GytZ31/maquette.png" alt="maquette" border="0"></a>)
+<a href="https://ibb.co/BwTNnKQ"><img src="https://i.ibb.co/9GytZ31/maquette.png" alt="maquette" border="0"></a>
 
 La maquette originelle, plutôt spartiate, est dans l'ensemble identique au produit final, si ce n'est le changement de couleurs pour rendre moins terne le produit fini et qui correspond mieux à la DA du jeu originel.
 
@@ -49,12 +49,15 @@ La page contient un header et un footer classiques sans aucune spécificités. L
 
 Le site a été codé en responsive-first. Son affichage par défaut est donc en colonne. Mais dès que la taille de l'écran dépasse une valeur le site passe en affichage horizontal, plus adapté aux écrans d'ordinateur.
 
-![responsive](https://ibb.co/bRZcXQ0)
+<a href="https://ibb.co/QFBgcqc"><img src="https://i.ibb.co/pvD7PsP/responsive.png" alt="responsive" border="0"></a>
 
 **Le javascript**
 
+<a href="https://ibb.co/vqghfZ1"><img src="https://i.ibb.co/NCQrfZx/fetch.png" alt="fetch" border="0"></a>
 On fetch d'abord l'API pour récupérer toutes les cartes du jeu et on stocke dans un tableau les données qui nous intéresse: l'id, l'attaque, la défense, l'image, ect..
 Puis on distribue 4 cartes au hasard au joueur et à son adversaire chacun dans leur zone de jeu. Pour cela on crée des éléments images qu'on ajoute aux zones de jeu, ces images, côté joueur, on pour valeur l'id de la carte, comme ça on peut facilement retrouver les informations nécessaires au jeu en fonction du choix de la carte. 
+
+<a href="https://ibb.co/ft24nCX"><img src="https://i.ibb.co/Gk0ctVd/main.png" alt="main" border="0"></a>
 
 Les 4 cartes de la main sont cliquables mais n'ont d'effet que si on est sûr de faire des dégâts à l'adversaire qui, lui, va se défendre avec une carte prise aléatoirement de sa main. Ce qui veut dire que, parfois, il va se défendre avec sa seule carte qui n'a pas de valeur de défense.
 Les PV de l'adversaire baissent en conséquence et un texte affiche le nombre de dégâts infligés.
