@@ -38,7 +38,7 @@ Un grand merci à:
 
 ## Maquette
 
-![Maquette](https://ibb.co/BwTNnKQ)
+![Maquette](<a href="https://ibb.co/BwTNnKQ"><img src="https://i.ibb.co/9GytZ31/maquette.png" alt="maquette" border="0"></a>)
 
 La maquette originelle, plutôt spartiate, est dans l'ensemble identique au produit final, si ce n'est le changement de couleurs pour rendre moins terne le produit fini et qui correspond mieux à la DA du jeu originel.
 
