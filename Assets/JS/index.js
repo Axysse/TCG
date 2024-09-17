@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             console.log(all)
 
-            
+
 // FONCTIONS
 function getRandomId(arr){
     return randomIndex = Math.floor(Math.random() * arr.length);
@@ -59,7 +59,6 @@ for( let i = 0; i <= 3; i++) {
     img.src= deck[id]["image"]
     img.setAttribute("id", "main"+[i])
     zone2.appendChild(img).value = deck[id]["id"]
-    // deck.filter((e) => e.image == deck[id]["image"])
     removeElement(deck, deck[id])
 }
 console.log(deck)

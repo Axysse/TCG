@@ -23,3 +23,8 @@ img {
     right: 15%;
     font-size: xx-large;
 }
+
+#jeu > div {
+    width: 17%;
+    height: 85%;
+}
