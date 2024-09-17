@@ -15,31 +15,41 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(all)
 
 
-function getRandomId(){
-    return randomIndex = Math.floor(Math.random() * all.length);
+function getRandomId(arr){
+    return randomIndex = Math.floor(Math.random() * arr.length);
 }
 
 zone1 = document.getElementById("zone1")
 zone2 = document.getElementById("zone2")
+pioche = document.getElementById("pioche")
+
+deck = []
+for(let i = 0; i <= 39; i++){
+    let id = getRandomId(all)
+    deck.push({ id: all[id].id, image: all[id].image} )
+}
+console.log(deck)
+
 
 for( let i = 0; i <= 3; i++) {
-    let id = getRandomId()
+    let id = getRandomId(all)
     let img = document.createElement("img")
     img.src= all[id]["image"]
     img.setAttribute("id", "adversaire"+[i])
     zone1.appendChild(img).value = all[id]["id"];
 }
 
-for( let i = 0; i <= 3; i++) {
-    let id = getRandomId()
-    let img = document.createElement("img")
-    img.src= all[id]["image"]
-    img.setAttribute("id", "main"+[i])
-    zone2.appendChild(img).value = all[id]["id"]
-    // let stats = [[all[id]["id"]], [all[id]["cost"]], [all[id]["defense"]], [all[id]["health"]], [all[id]["power"]]]
-    // console.log(stats)
-}
+let remove = []
 
+for( let i = 0; i <= 3; i++) {
+    let id = getRandomId(deck)
+    let img = document.createElement("img")
+    img.src= deck[id]["image"]
+    img.setAttribute("id", "main"+[i])
+    zone2.appendChild(img).value = deck[id]["id"]
+    remove = deck.filter((e) => e.id !== img.value)
+}
+console .log(remove)
 let main = zone2.getElementsByTagName('img')
 console.log(main)
 
@@ -50,6 +60,15 @@ main0 = document.getElementById("main0")
 main1 = document.getElementById("main1")
 main2 = document.getElementById("main2")
 main3 = document.getElementById("main3")
+
+pioche.setAttribute("value", remove.length)
+pioche.addEventListener("click", () => {
+    let nbr = document.createElement("p")
+    let text = document.createTextNode("pioche : " + remove.length)
+    nbr.appendChild(text)
+    jeu.appendChild(nbr)
+})
+ 
 
 // Appel de la carte 0
 main0.addEventListener("click", () => {
@@ -219,8 +238,11 @@ main3.addEventListener("click", () => {
     zone3.appendChild(h2)
     pvpnj.innerText = PVPNJ - dmg}
 })
+
                     
 })
+
+
 })
 
 

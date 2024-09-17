@@ -1,8 +1,25 @@
 img {
-    width: 546px;
-    height: 762px;
+    width: 220px;
 }
+
+@media only screen and (min-width: 1025px) {
+    img {
+        width: 20%;
+    }
+  }
+
+  @media only screen and (min-width: 1600px) {
+    img {
+        width: 22%;
+    }
+  }
 
 #zone2 > img:hover {
     transform: scale(1.2);
+}
+
+#jeu > p {
+    position: relative;
+    right: 320px;
+    font-size: xx-large;
 }
