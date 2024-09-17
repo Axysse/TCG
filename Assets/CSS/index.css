@@ -20,11 +20,16 @@ img {
 
 #jeu > p {
     position: relative;
-    right: 15%;
+    right: 84%;
     font-size: xx-large;
 }
 
 #jeu > div {
     width: 17%;
     height: 85%;
+}
+
+#jeu > div > img {
+    width: 100%;
+    height: 100%;
 }

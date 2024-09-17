@@ -14,6 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             console.log(all)
 
+zone1 = document.getElementById("zone1")
+zone2 = document.getElementById("zone2")
+pioche = document.getElementById("pioche")
+            
+b1 = document.getElementById("b1")
+b2 = document.getElementById("b2")
+b3 = document.getElementById("b3")
+b4 = document.getElementById("b4")
 
 // FONCTIONS
 function getRandomId(arr){
@@ -28,12 +36,54 @@ function removeElement(array, elementToRemove) {
     });
     return array;
 }
+
+function placeCard(card){
+    switch(true) {
+        case (!b1.classList.contains('plein')) :
+    all.forEach(element => {
+        if(element.image == card){
+            let img = document.createElement("img")
+            img.src= element['image']
+            b1.appendChild(img)
+            b1.classList.add('plein')
+        }
+    });
+    break;
+    case (b1.classList.contains('plein')  && !b2.classList.contains('plein')) :
+        all.forEach(element => {
+            if(element.image == card){
+                let img = document.createElement("img")
+                img.src= element['image']
+                b2.appendChild(img)
+                b2.classList.add('plein')
+            }
+        });
+        break;
+        case (b1.classList.contains('plein')  && b2.classList.contains('plein') && !b3.classList.contains('plein')) :
+        all.forEach(element => {
+            if(element.image == card){
+                let img = document.createElement("img")
+                img.src= element['image']
+                b3.appendChild(img)
+                b3.classList.add('plein')
+            }
+        });
+        break;
+        case (b1.classList.contains('plein')  && b2.classList.contains('plein') && b3.classList.contains('plein') && !b4.classList.contains('plein')) :
+        all.forEach(element => {
+            if(element.image == card){
+                let img = document.createElement("img")
+                img.src= element['image']
+                b4.appendChild(img)
+                b4.classList.add('plein')
+            }
+        });
+        break;
+}  
+}
 // FONCTIONS
 
 
-zone1 = document.getElementById("zone1")
-zone2 = document.getElementById("zone2")
-pioche = document.getElementById("pioche")
 
 deck = []
 for(let i = 0; i <= 39; i++){
@@ -77,7 +127,7 @@ main3 = document.getElementById("main3")
 pioche.setAttribute("value", deck.length)
 pioche.addEventListener("click", () => {
     let nbr = document.createElement("p")
-    let text = document.createTextNode("pioche : " + deck.length)
+    let text = document.createTextNode( deck.length)
     nbr.appendChild(text)
     jeu.appendChild(nbr)
 })
@@ -92,7 +142,6 @@ main0.addEventListener("click", () => {
     function getRandomCard(){
         return randomIndex = Math.floor(Math.random() * adversaire.length);
     } 
-
     let defId = getRandomCard()
 
     all.forEach(el => {
@@ -122,6 +171,9 @@ main0.addEventListener("click", () => {
     h2.innerText = "Vous avez infligé "+ dmg + " de dégats" 
     zone3.appendChild(h2)
     pvpnj.innerText = PVPNJ - dmg }
+
+    placeCard(main[0]['src'])
+    // console.log(main[0]['src'])
 })
 
 // Appel de la carte 1
@@ -165,6 +217,7 @@ main1.addEventListener("click", () => {
     zone3.appendChild(h2)
 
         pvpnj.innerText = PVPNJ - dmg}
+        placeCard(main[1]['src'])
 })
 
 // Appel de la carte 2
@@ -208,6 +261,7 @@ main2.addEventListener("click", () => {
     zone3.appendChild(h2)
 
         pvpnj.innerText = PVPNJ - dmg}
+        placeCard(main[2]['src'])
 })
 
 // Appel de la carte 3
@@ -250,6 +304,7 @@ main3.addEventListener("click", () => {
     h2.innerText = "Vous avez infligé "+ dmg + " de dégats" 
     zone3.appendChild(h2)
     pvpnj.innerText = PVPNJ - dmg}
+    placeCard(main[3]['src'])
 })
 
                     
