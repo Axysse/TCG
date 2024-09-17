@@ -14,10 +14,22 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             console.log(all)
 
-
+            
+// FONCTIONS
 function getRandomId(arr){
     return randomIndex = Math.floor(Math.random() * arr.length);
 }
+
+function removeElement(array, elementToRemove) {
+    array.forEach((item, index) => {
+        if (item == elementToRemove) {
+            array.splice(index, 1);
+        }
+    });
+    return array;
+}
+// FONCTIONS
+
 
 zone1 = document.getElementById("zone1")
 zone2 = document.getElementById("zone2")
@@ -39,7 +51,7 @@ for( let i = 0; i <= 3; i++) {
     zone1.appendChild(img).value = all[id]["id"];
 }
 
-let remove = []
+
 
 for( let i = 0; i <= 3; i++) {
     let id = getRandomId(deck)
@@ -47,9 +59,11 @@ for( let i = 0; i <= 3; i++) {
     img.src= deck[id]["image"]
     img.setAttribute("id", "main"+[i])
     zone2.appendChild(img).value = deck[id]["id"]
-    remove = deck.filter((e) => e.id !== img.value)
+    // deck.filter((e) => e.image == deck[id]["image"])
+    removeElement(deck, deck[id])
 }
-console .log(remove)
+console.log(deck)
+
 let main = zone2.getElementsByTagName('img')
 console.log(main)
 
@@ -61,10 +75,10 @@ main1 = document.getElementById("main1")
 main2 = document.getElementById("main2")
 main3 = document.getElementById("main3")
 
-pioche.setAttribute("value", remove.length)
+pioche.setAttribute("value", deck.length)
 pioche.addEventListener("click", () => {
     let nbr = document.createElement("p")
-    let text = document.createTextNode("pioche : " + remove.length)
+    let text = document.createTextNode("pioche : " + deck.length)
     nbr.appendChild(text)
     jeu.appendChild(nbr)
 })
