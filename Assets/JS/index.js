@@ -100,26 +100,34 @@ function cleanBoard(){
         b3.classList.remove('plein')
         b4.classList.remove('plein')
 
-        if(main[0] != 'undefined'){
+        if( (main0 != null) || typeof (main0 != "undefined") && !(main1 != null) || typeof !(main1 != "undefined") && !(main2 != null) || typeof !(main2 != "undefined") && !(main3 != null) || typeof !(main3 != "undefined") ){
         if(main0.classList.contains('hidden')){
             main0.remove()
+        } else {
+            return false
         }
     }
-        if(main[1] != 'undefined'){
+        if( !(main0 != null) || typeof !(main0 != "undefined") && (main1 != null) || typeof (main1 != "undefined") && !(main2 != null) || typeof !(main2 != "undefined") && !(main3 != null) || typeof !(main3 != "undefined")){
         if(main1.classList.contains('hidden')){
             main1.remove()
+        } else {
+           return false
         }}
     
     
 
-        if(main[2] != 'undefined'){
+        if(!(main0 != null) || typeof !(main0 != "undefined") && !(main1 != null) || typeof !(main1 != "undefined") && (main2 != null) || typeof (main2 != "undefined") && !(main3 != null) || typeof !(main3 != "undefined")){
         if(main2.classList.contains('hidden')){
             main2.remove()
+        } else {
+           return false
         }}
 
-        if(main[3] != 'undefined'){
+        if( !(main0 != null) || typeof !(main0 != "undefined") && !(main1 != null) || typeof !(main1 != "undefined") && !(main2 != null) || typeof !(main2 != "undefined") && (main3 != null) || typeof (main3 != "undefined")){
         if(main3.classList.contains('hidden')){
             main3.remove()
+        } else {
+            return false
         }}
         
 }
@@ -130,8 +138,8 @@ function pio(){
         let img = document.createElement("img")
         img.src= deck[id]["image"]
         switch(true){
-            case(typeof main0 == 'undefined'):
-                img.setAttribute("id", "main"+"0")
+            case(typeof main0 != 'undefined'):
+                img.setAttribute("id", "main0")
                 main0 = document.getElementById("main0")
                  zone2.appendChild(img).value = deck[id]["id"]
         removeElement(deck, deck[id])
@@ -192,13 +200,11 @@ for( let i = 0; i <= 3; i++) {
 }
 console.log(deck)
 
-let main = zone2.getElementsByTagName('img')
-console.log(main)
+let main0 = document.getElementById('main0')
+
 
 let adversaire = zone1.getElementsByTagName('img')
 console.log(adversaire)
-
-
 
 pioche.setAttribute("value", deck.length)
 pioche.addEventListener("click", () => {
@@ -216,10 +222,9 @@ let atq = null;
 
 
 // Appel de la carte 0
-main[0].addEventListener("click", () => {
+if(main0 != 'undefined'){
+main0.addEventListener("click", () => {
     // console.log(main0)
-    
-
     function getRandomCard(){
         return randomIndex = Math.floor(Math.random() * adversaire.length);
     } 
@@ -244,7 +249,6 @@ main[0].addEventListener("click", () => {
     let dmg = atq - def
     console.log(dmg)
 
-    
     if(dmg <= 0){
         h2.innerText = "Vous avez infligé 0 de dégats"
     } else {
@@ -254,11 +258,9 @@ main[0].addEventListener("click", () => {
 
     placeCard(main0['src'])
         main0.classList.add('hidden')
-        
-    
     // console.log(main[0]['src'])
-    
 })
+}
 
 
 // Appel de la carte 1

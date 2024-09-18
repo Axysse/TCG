@@ -8,11 +8,11 @@ img {
     }
   }
 
-  @media only screen and (min-width: 1600px) {
+@media only screen and (min-width: 1600px) {
     img {
         width: 22%;
     }
-  }
+}
 
 #zone2 > img:hover {
     transform: scale(1.2);
@@ -22,7 +22,7 @@ img {
 #jeu > div:hover {
     transform: scale(1.1);
     height: 100%;
-}
+    }
 }
 
 #jeu > p {
@@ -30,7 +30,6 @@ img {
     right: 92%;
     font-size: xx-large;
 }
-
 
 #jeu > div {
     width: 30%;
@@ -42,9 +41,9 @@ img {
     height: 100%;
 }
 
-  @media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1025px) {
     #jeu > div > img {
         width: 100%;
         height: 100%;
     }
-  }
+}
