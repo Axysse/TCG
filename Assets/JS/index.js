@@ -14,14 +14,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             console.log(all)
 
-zone1 = document.getElementById("zone1")
-zone2 = document.getElementById("zone2")
-pioche = document.getElementById("pioche")
+let zone1 = document.getElementById("zone1")
+let zone2 = document.getElementById("zone2")
+let pioche = document.getElementById("pioche")
             
-b1 = document.getElementById("b1")
-b2 = document.getElementById("b2")
-b3 = document.getElementById("b3")
-b4 = document.getElementById("b4")
+let b1 = document.getElementById("b1")
+let b2 = document.getElementById("b2")
+let b3 = document.getElementById("b3")
+let b4 = document.getElementById("b4")
+
+
+
+
 
 // FONCTIONS
 function getRandomId(arr){
@@ -47,7 +51,7 @@ function placeCard(card){
             b1.appendChild(img)
             b1.classList.add('plein')
         }
-    });
+    })
     break;
     case (b1.classList.contains('plein')  && !b2.classList.contains('plein')) :
         all.forEach(element => {
@@ -57,7 +61,7 @@ function placeCard(card){
                 b2.appendChild(img)
                 b2.classList.add('plein')
             }
-        });
+        })
         break;
         case (b1.classList.contains('plein')  && b2.classList.contains('plein') && !b3.classList.contains('plein')) :
         all.forEach(element => {
@@ -67,7 +71,7 @@ function placeCard(card){
                 b3.appendChild(img)
                 b3.classList.add('plein')
             }
-        });
+        })
         break;
         case (b1.classList.contains('plein')  && b2.classList.contains('plein') && b3.classList.contains('plein') && !b4.classList.contains('plein')) :
         all.forEach(element => {
@@ -77,9 +81,84 @@ function placeCard(card){
                 b4.appendChild(img)
                 b4.classList.add('plein')
             }
-        });
+        })
         break;
 }  
+}
+
+function cleanBoard(){
+        document.querySelectorAll(".plein img")
+        .forEach(img =>
+            img.remove()
+        )
+        document.querySelectorAll("h2")
+        .forEach(h2 =>
+            h2.remove()
+        )
+        b1.classList.remove('plein')
+        b2.classList.remove('plein')
+        b3.classList.remove('plein')
+        b4.classList.remove('plein')
+
+        if(main[0] != 'undefined'){
+        if(main0.classList.contains('hidden')){
+            main0.remove()
+        }
+    }
+        if(main[1] != 'undefined'){
+        if(main1.classList.contains('hidden')){
+            main1.remove()
+        }}
+    
+    
+
+        if(main[2] != 'undefined'){
+        if(main2.classList.contains('hidden')){
+            main2.remove()
+        }}
+
+        if(main[3] != 'undefined'){
+        if(main3.classList.contains('hidden')){
+            main3.remove()
+        }}
+        
+}
+
+function pio(){
+    
+        let id = getRandomId(deck)
+        let img = document.createElement("img")
+        img.src= deck[id]["image"]
+        switch(true){
+            case(typeof main0 == 'undefined'):
+                img.setAttribute("id", "main"+"0")
+                main0 = document.getElementById("main0")
+                 zone2.appendChild(img).value = deck[id]["id"]
+        removeElement(deck, deck[id])
+                break; 
+            case(typeof main0 != 'undefined' && typeof main1 == 'undefined'):    
+            img.setAttribute("id", "main1")
+             main1 = document.getElementById("main1")
+             zone2.appendChild(img).value = deck[id]["id"]
+        removeElement(deck, deck[id])
+                break;
+            case(typeof main0 != 'undefined' && typeof main1 != 'undefined' && typeof main2 == 'undefined'):    
+            img.setAttribute("id", "main2")
+             main2 = document.getElementById("main2")
+             zone2.appendChild(img).value = deck[id]["id"]
+        removeElement(deck, deck[id])
+                break;
+            case(typeof main0 != 'undefined' && typeof main1 != 'undefined' && typeof main2 != 'undefined' && typeof main3 == 'undefined'):    
+                img.setAttribute("id", "main3")
+                 main3 = document.getElementById("main3")
+                 zone2.appendChild(img).value = deck[id]["id"]
+        removeElement(deck, deck[id])
+                break;        
+        }
+        // img.setAttribute("id", "main"+[i])
+        // zone2.appendChild(img).value = deck[id]["id"]
+        // removeElement(deck, deck[id])
+    
 }
 // FONCTIONS
 
@@ -119,10 +198,7 @@ console.log(main)
 let adversaire = zone1.getElementsByTagName('img')
 console.log(adversaire)
 
-main0 = document.getElementById("main0")
-main1 = document.getElementById("main1")
-main2 = document.getElementById("main2")
-main3 = document.getElementById("main3")
+
 
 pioche.setAttribute("value", deck.length)
 pioche.addEventListener("click", () => {
@@ -132,12 +208,17 @@ pioche.addEventListener("click", () => {
     jeu.appendChild(nbr)
 })
  
+let atq = null;
+    let def = null;
+
+    let zone3 = document.getElementById("zone3")
+    let h2 = document.createElement("h2")
+
 
 // Appel de la carte 0
-main0.addEventListener("click", () => {
-
-    let atq = null;
-    let def = null;
+main[0].addEventListener("click", () => {
+    // console.log(main0)
+    
 
     function getRandomCard(){
         return randomIndex = Math.floor(Math.random() * adversaire.length);
@@ -163,8 +244,7 @@ main0.addEventListener("click", () => {
     let dmg = atq - def
     console.log(dmg)
 
-    let zone3 = document.getElementById("zone3")
-    let h2 = document.createElement("h2")
+    
     if(dmg <= 0){
         h2.innerText = "Vous avez infligé 0 de dégats"
     } else {
@@ -172,15 +252,20 @@ main0.addEventListener("click", () => {
     zone3.appendChild(h2)
     pvpnj.innerText = PVPNJ - dmg }
 
-    placeCard(main[0]['src'])
+    placeCard(main0['src'])
+        main0.classList.add('hidden')
+        
+    
     // console.log(main[0]['src'])
+    
 })
 
+
 // Appel de la carte 1
+if(main1 != 'undefined'){
 main1.addEventListener("click", () => {
 
-    let atq = null;
-    let def = null;
+    
 
     function getRandomCard(){
         return randomIndex = Math.floor(Math.random() * adversaire.length);
@@ -208,8 +293,7 @@ main1.addEventListener("click", () => {
     let dmg = atq - def
     console.log(dmg)
 
-    let zone3 = document.getElementById("zone3")
-    let h2 = document.createElement("h2")
+   
     if(dmg <0){
         h2.innerText = "Vous avez infligé 0 de dégats"
     } else {
@@ -217,14 +301,17 @@ main1.addEventListener("click", () => {
     zone3.appendChild(h2)
 
         pvpnj.innerText = PVPNJ - dmg}
-        placeCard(main[1]['src'])
+        placeCard(main1['src'])
+        main1.classList.add('hidden')
+
 })
+}
 
 // Appel de la carte 2
+if(main2 != 'undefined'){
 main2.addEventListener("click", () => {
 
-    let atq = null;
-    let def = null;
+    
 
     function getRandomCard(){
         return randomIndex = Math.floor(Math.random() * adversaire.length);
@@ -252,8 +339,7 @@ main2.addEventListener("click", () => {
     let dmg = atq - def
     console.log(dmg)
 
-    let zone3 = document.getElementById("zone3")
-    let h2 = document.createElement("h2")
+    
     if(dmg <0){
         h2.innerText = "Vous avez infligé 0 de dégats"
     } else {
@@ -261,14 +347,16 @@ main2.addEventListener("click", () => {
     zone3.appendChild(h2)
 
         pvpnj.innerText = PVPNJ - dmg}
-        placeCard(main[2]['src'])
+        placeCard(main2['src'])
+        main2.classList.add('hidden')
 })
+}
 
 // Appel de la carte 3
+if(main3 != 'undefined'){
 main3.addEventListener("click", () => {
 
-    let atq = null;
-    let def = null;
+   
 
     function getRandomCard(){
         return randomIndex = Math.floor(Math.random() * adversaire.length);
@@ -296,15 +384,23 @@ main3.addEventListener("click", () => {
     let dmg = atq - def
     console.log(dmg)
 
-    let zone3 = document.getElementById("zone3")
-    let h2 = document.createElement("h2")
+
     if(dmg <0){
         h2.innerText = "Vous avez infligé 0 de dégats"
     } else {
     h2.innerText = "Vous avez infligé "+ dmg + " de dégats" 
     zone3.appendChild(h2)
     pvpnj.innerText = PVPNJ - dmg}
-    placeCard(main[3]['src'])
+    placeCard(main3['src'])
+    main3.classList.add('hidden')
+})
+}
+
+let fin = this.getElementById("fin")
+
+fin.addEventListener("click", () => {
+    cleanBoard()
+    pio()
 })
 
                     
