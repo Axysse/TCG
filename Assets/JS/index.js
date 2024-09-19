@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let pvpnj = document.getElementById("pvpnj")
     let pvjc = document.getElementById("pvjc")
     pvpnj.innerText = PVPNJ
-    pvjc. innerText = PVJC
+    pvjc.innerText = PVJC
+    let mana = 10
+    let manajc = document.getElementById("manajc")
+    manajc.innerText = mana
     fetch("https://raw.githubusercontent.com/the-fab-cube/flesh-and-blood-cards/develop/json/english/card.json")
         .then(res => res.json())
         .then(data => {
@@ -22,10 +25,6 @@ let b1 = document.getElementById("b1")
 let b2 = document.getElementById("b2")
 let b3 = document.getElementById("b3")
 let b4 = document.getElementById("b4")
-
-
-
-
 
 // FONCTIONS
 function getRandomId(arr){
@@ -98,8 +97,7 @@ function cleanBoard(){
         b1.classList.remove('plein')
         b2.classList.remove('plein')
         b3.classList.remove('plein')
-        b4.classList.remove('plein')
-        
+        b4.classList.remove('plein')        
 }
 
 function pio(){
@@ -181,8 +179,9 @@ pioche.addEventListener("click", () => {
     jeu.appendChild(nbr)
 })
  
-let atq = null;
+    let atq = null;
     let def = null;
+    let cost =null;
 
     let zone3 = document.getElementById("zone3")
     let h2 = document.createElement("h2")
@@ -191,8 +190,7 @@ let atq = null;
     let main1 = document.getElementById("main1")
     let main2 = document.getElementById("main2")
     let main3 = document.getElementById("main3")
-    
-    
+
 // Appel de la carte 0
 if(main0 != 'undefined'){
 main0.addEventListener("click", () => {
@@ -213,20 +211,25 @@ main0.addEventListener("click", () => {
     all.forEach(element => {
         if(element['id'] == main0.value){
             atq = element['power']
+            cost = element["cost"]
             console.log(atq)
             return atq;
         }
     })
-
+    
+    console.log(cost)
     let dmg = atq - def
     console.log(dmg)
 
     if(dmg <= 0){
         h2.innerText = "Vous avez infligé 0 de dégats"
+        manajc.innerText = mana - cost
     } else {
-    h2.innerText = "Vous avez infligé "+ dmg + " de dégats" 
+    h2.innerText = "Vous avez infligé "+ dmg + " de dégats"
     zone3.appendChild(h2)
-    pvpnj.innerText = PVPNJ - dmg }
+    pvpnj.innerText = PVPNJ - dmg
+    manajc.innerText = mana - cost
+ }
 
     placeCard(main0['src'])
         main0['src'] = ""
@@ -260,6 +263,7 @@ main1.addEventListener("click", () => {
     all.forEach(element => {
         if(element['id'] == main1.value){
             atq = element['power']
+            cost = element["cost"]
             console.log(atq)
             return atq;
         }
@@ -272,11 +276,13 @@ main1.addEventListener("click", () => {
    
     if(dmg <0){
         h2.innerText = "Vous avez infligé 0 de dégats"
+        manajc.innerText = mana - cost
     } else {
     h2.innerText = "Vous avez infligé "+ dmg + " de dégats" 
     zone3.appendChild(h2)
 
-        pvpnj.innerText = PVPNJ - dmg}
+        pvpnj.innerText = PVPNJ - dmg
+        manajc.innerText = mana - cost}
         placeCard(main1['src'])
         main1['src'] = ""
         main1.setAttribute("cost", null)
@@ -308,6 +314,7 @@ main2.addEventListener("click", () => {
     all.forEach(element => {
         if(element['id'] == main2.value){
             atq = element['power']
+            cost = element["cost"]
             console.log(atq)
             return atq;
         }
@@ -320,11 +327,13 @@ main2.addEventListener("click", () => {
     
     if(dmg <0){
         h2.innerText = "Vous avez infligé 0 de dégats"
+        manajc.innerText = mana - cost
     } else {
     h2.innerText = "Vous avez infligé "+ dmg + " de dégats" 
     zone3.appendChild(h2)
 
-        pvpnj.innerText = PVPNJ - dmg}
+        pvpnj.innerText = PVPNJ - dmg
+        manajc.innerText = mana - cost}
         placeCard(main2['src'])
         main2['src'] = ""
         main2.setAttribute("cost", null)
@@ -355,6 +364,7 @@ main3.addEventListener("click", () => {
     all.forEach(element => {
         if(element['id'] == main3.value){
             atq = element['power']
+            cost = element["cost"]
             console.log(atq)
             return atq;
         }
@@ -370,7 +380,8 @@ main3.addEventListener("click", () => {
     } else {
     h2.innerText = "Vous avez infligé "+ dmg + " de dégats" 
     zone3.appendChild(h2)
-    pvpnj.innerText = PVPNJ - dmg}
+    pvpnj.innerText = PVPNJ - dmg
+    manajc.innerText = mana - cost}
     placeCard(main3['src'])
     main3['src'] = ""
     main3.setAttribute("cost", null)
