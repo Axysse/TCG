@@ -99,36 +99,40 @@ function cleanBoard(){
         b2.classList.remove('plein')
         b3.classList.remove('plein')
         b4.classList.remove('plein')
-
-        if(main0 != null) {
-        if(main0.classList.contains('hidden')){
-            main0.remove()
-        } else {
-            return false
-        }
-    }
-        if (main1 != null){
-        if(main1.classList.contains('hidden')){
-            main1.remove()
-        } else {
-           return false
-        }}
+        
+                
+    //     if(main0 !== null){
+    //     if(main0.classList.contains('hidden') ) {
+    //         main0.remove()
+    //     } else {
+    //         return false
+    //     }
+    // }
     
+    //     if(main1 !== null){
+    //     if (main1.classList.contains('hidden')){
+    //         main1.remove()
+    //     } else {
+    //        return false
+    //     }
+    // }
     
+    // if(main2 !== null){
+    //     if(main2.classList.contains('hidden')){
+    //         main2.remove()
+    //     } else {
+    //        return false
+    //     }
+    // }
 
-        if(main2 != null){
-        if(main2.classList.contains('hidden')){
-            main2.remove()
-        } else {
-           return false
-        }}
 
-        if(main3 != null){
-        if(main3.classList.contains('hidden')){
-            main3.remove()
-        } else {
-            return false
-        }}
+    // if(main3 !== null){
+    //     if(main3.classList.contains('hidden')){
+    //         main3.remove()
+    //     } else {
+    //         return false
+    //     }
+    // }
         
 }
 
@@ -138,28 +142,28 @@ function pio(){
         let img = document.createElement("img")
         img.src= deck[id]["image"]
         switch(true){
-            case(typeof main0 != 'undefined'):
+            case(main0.classList.contains("vide")):
                 img.setAttribute("id", "main0")
-                main0 = document.getElementById("main0")
-                 zone2.appendChild(img).value = deck[id]["id"]
+                main0['src'] = img.src
+                main0.classList.remove("vide")
         removeElement(deck, deck[id])
                 break; 
-            case(typeof main0 != 'undefined' && typeof main1 == 'undefined'):    
+            case(main1.classList.contains("vide")):    
             img.setAttribute("id", "main1")
-             main1 = document.getElementById("main1")
-             zone2.appendChild(img).value = deck[id]["id"]
+            main1['src'] = img.src
+            main1.classList.remove("vide")
         removeElement(deck, deck[id])
                 break;
-            case(typeof main0 != 'undefined' && typeof main1 != 'undefined' && typeof main2 == 'undefined'):    
+            case(main2.classList.contains("vide")):    
             img.setAttribute("id", "main2")
-             main2 = document.getElementById("main2")
-             zone2.appendChild(img).value = deck[id]["id"]
+            main2['src'] = img.src
+            main2.classList.remove("vide")
         removeElement(deck, deck[id])
                 break;
-            case(typeof main0 != 'undefined' && typeof main1 != 'undefined' && typeof main2 != 'undefined' && typeof main3 == 'undefined'):    
+            case(main3.classList.contains("vide")):    
                 img.setAttribute("id", "main3")
-                 main3 = document.getElementById("main3")
-                 zone2.appendChild(img).value = deck[id]["id"]
+                main3['src'] = img.src
+                main3.classList.remove("vide")
         removeElement(deck, deck[id])
                 break;        
         }
@@ -200,9 +204,6 @@ for( let i = 0; i <= 3; i++) {
 }
 console.log(deck)
 
-let main0 = document.getElementById('main0')
-
-
 let adversaire = zone1.getElementsByTagName('img')
 console.log(adversaire)
 
@@ -220,6 +221,10 @@ let atq = null;
     let zone3 = document.getElementById("zone3")
     let h2 = document.createElement("h2")
 
+    let main0 = document.getElementById("main0")
+    let main1 = document.getElementById("main1")
+    let main2 = document.getElementById("main2")
+    let main3 = document.getElementById("main3")
 
 // Appel de la carte 0
 if(main0 != 'undefined'){
@@ -257,7 +262,8 @@ main0.addEventListener("click", () => {
     pvpnj.innerText = PVPNJ - dmg }
 
     placeCard(main0['src'])
-        main0.classList.add('hidden')
+        main0['src'] = ""
+        main0.classList.add("vide")
     // console.log(main[0]['src'])
 })
 }
@@ -304,7 +310,8 @@ main1.addEventListener("click", () => {
 
         pvpnj.innerText = PVPNJ - dmg}
         placeCard(main1['src'])
-        main1.classList.add('hidden')
+        main1['src'] = ""
+        main1.classList.add("vide")
 
 })
 }
@@ -350,7 +357,8 @@ main2.addEventListener("click", () => {
 
         pvpnj.innerText = PVPNJ - dmg}
         placeCard(main2['src'])
-        main2.classList.add('hidden')
+        main2['src'] = ""
+        main2.classList.add("vide")
 })
 }
 
@@ -394,7 +402,8 @@ main3.addEventListener("click", () => {
     zone3.appendChild(h2)
     pvpnj.innerText = PVPNJ - dmg}
     placeCard(main3['src'])
-    main3.classList.add('hidden')
+    main3['src'] = ""
+    main3.classList.add("vide")
 })
 }
 
