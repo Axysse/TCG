@@ -100,40 +100,6 @@ function cleanBoard(){
         b3.classList.remove('plein')
         b4.classList.remove('plein')
         
-                
-    //     if(main0 !== null){
-    //     if(main0.classList.contains('hidden') ) {
-    //         main0.remove()
-    //     } else {
-    //         return false
-    //     }
-    // }
-    
-    //     if(main1 !== null){
-    //     if (main1.classList.contains('hidden')){
-    //         main1.remove()
-    //     } else {
-    //        return false
-    //     }
-    // }
-    
-    // if(main2 !== null){
-    //     if(main2.classList.contains('hidden')){
-    //         main2.remove()
-    //     } else {
-    //        return false
-    //     }
-    // }
-
-
-    // if(main3 !== null){
-    //     if(main3.classList.contains('hidden')){
-    //         main3.remove()
-    //     } else {
-    //         return false
-    //     }
-    // }
-        
 }
 
 function pio(){
@@ -143,34 +109,33 @@ function pio(){
         img.src= deck[id]["image"]
         switch(true){
             case(main0.classList.contains("vide")):
-                img.setAttribute("id", "main0")
                 main0['src'] = img.src
+                main0.setAttribute("cost", deck[id]["cost"])
                 main0.classList.remove("vide")
         removeElement(deck, deck[id])
                 break; 
             case(main1.classList.contains("vide")):    
             img.setAttribute("id", "main1")
             main1['src'] = img.src
+            main1.setAttribute("cost", deck[id]["cost"])
             main1.classList.remove("vide")
         removeElement(deck, deck[id])
                 break;
             case(main2.classList.contains("vide")):    
             img.setAttribute("id", "main2")
             main2['src'] = img.src
+            main2.setAttribute("cost", deck[id]["cost"])
             main2.classList.remove("vide")
         removeElement(deck, deck[id])
                 break;
             case(main3.classList.contains("vide")):    
                 img.setAttribute("id", "main3")
                 main3['src'] = img.src
+                main3.setAttribute("cost", deck[id]["cost"])
                 main3.classList.remove("vide")
         removeElement(deck, deck[id])
                 break;        
         }
-        // img.setAttribute("id", "main"+[i])
-        // zone2.appendChild(img).value = deck[id]["id"]
-        // removeElement(deck, deck[id])
-    
 }
 // FONCTIONS
 
@@ -179,7 +144,7 @@ function pio(){
 deck = []
 for(let i = 0; i <= 39; i++){
     let id = getRandomId(all)
-    deck.push({ id: all[id].id, image: all[id].image} )
+    deck.push({ id: all[id].id, image: all[id].image, cost: all[id].cost} )
 }
 console.log(deck)
 
@@ -199,6 +164,7 @@ for( let i = 0; i <= 3; i++) {
     let img = document.createElement("img")
     img.src= deck[id]["image"]
     img.setAttribute("id", "main"+[i])
+    img.setAttribute("cost", deck[id]["cost"])
     zone2.appendChild(img).value = deck[id]["id"]
     removeElement(deck, deck[id])
 }
@@ -225,7 +191,8 @@ let atq = null;
     let main1 = document.getElementById("main1")
     let main2 = document.getElementById("main2")
     let main3 = document.getElementById("main3")
-
+    
+    
 // Appel de la carte 0
 if(main0 != 'undefined'){
 main0.addEventListener("click", () => {
@@ -263,6 +230,7 @@ main0.addEventListener("click", () => {
 
     placeCard(main0['src'])
         main0['src'] = ""
+        main0.setAttribute("cost", null)
         main0.classList.add("vide")
     // console.log(main[0]['src'])
 })
@@ -311,6 +279,7 @@ main1.addEventListener("click", () => {
         pvpnj.innerText = PVPNJ - dmg}
         placeCard(main1['src'])
         main1['src'] = ""
+        main1.setAttribute("cost", null)
         main1.classList.add("vide")
 
 })
@@ -358,6 +327,7 @@ main2.addEventListener("click", () => {
         pvpnj.innerText = PVPNJ - dmg}
         placeCard(main2['src'])
         main2['src'] = ""
+        main2.setAttribute("cost", null)
         main2.classList.add("vide")
 })
 }
@@ -403,6 +373,7 @@ main3.addEventListener("click", () => {
     pvpnj.innerText = PVPNJ - dmg}
     placeCard(main3['src'])
     main3['src'] = ""
+    main3.setAttribute("cost", null)
     main3.classList.add("vide")
 })
 }
