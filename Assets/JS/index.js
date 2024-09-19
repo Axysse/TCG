@@ -100,14 +100,14 @@ function cleanBoard(){
         b3.classList.remove('plein')
         b4.classList.remove('plein')
 
-        if( (main0 != null) || typeof (main0 != "undefined") && !(main1 != null) || typeof !(main1 != "undefined") && !(main2 != null) || typeof !(main2 != "undefined") && !(main3 != null) || typeof !(main3 != "undefined") ){
+        if(main0 != null) {
         if(main0.classList.contains('hidden')){
             main0.remove()
         } else {
             return false
         }
     }
-        if( !(main0 != null) || typeof !(main0 != "undefined") && (main1 != null) || typeof (main1 != "undefined") && !(main2 != null) || typeof !(main2 != "undefined") && !(main3 != null) || typeof !(main3 != "undefined")){
+        if (main1 != null){
         if(main1.classList.contains('hidden')){
             main1.remove()
         } else {
@@ -116,14 +116,14 @@ function cleanBoard(){
     
     
 
-        if(!(main0 != null) || typeof !(main0 != "undefined") && !(main1 != null) || typeof !(main1 != "undefined") && (main2 != null) || typeof (main2 != "undefined") && !(main3 != null) || typeof !(main3 != "undefined")){
+        if(main2 != null){
         if(main2.classList.contains('hidden')){
             main2.remove()
         } else {
            return false
         }}
 
-        if( !(main0 != null) || typeof !(main0 != "undefined") && !(main1 != null) || typeof !(main1 != "undefined") && !(main2 != null) || typeof !(main2 != "undefined") && (main3 != null) || typeof (main3 != "undefined")){
+        if(main3 != null){
         if(main3.classList.contains('hidden')){
             main3.remove()
         } else {
