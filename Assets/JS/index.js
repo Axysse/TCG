@@ -100,7 +100,7 @@ function cleanBoard(){
         b4.classList.remove('plein')        
 }
 
-function pio(){
+function pick(){
     
         let id = getRandomId(deck)
         let img = document.createElement("img")
@@ -393,13 +393,7 @@ let fin = this.getElementById("fin")
 
 fin.addEventListener("click", () => {
     cleanBoard()
-    pio()
+    pick()
+})              
 })
-
-                    
 })
-
-
-})
-
-
